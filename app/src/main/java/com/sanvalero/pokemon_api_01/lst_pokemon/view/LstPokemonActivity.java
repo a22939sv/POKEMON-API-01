@@ -1,6 +1,8 @@
 package com.sanvalero.pokemon_api_01.lst_pokemon.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -9,13 +11,14 @@ import android.widget.Toast;
 import com.sanvalero.pokemon_api_01.R;
 import com.sanvalero.pokemon_api_01.entities.Pokemon;
 import com.sanvalero.pokemon_api_01.lst_pokemon.LstPokemonContract;
+import com.sanvalero.pokemon_api_01.lst_pokemon.adapter.AdapterPokemon;
 import com.sanvalero.pokemon_api_01.lst_pokemon.presenter.LstPokemonPresenter;
 
 import java.util.ArrayList;
 
 public class LstPokemonActivity extends AppCompatActivity implements LstPokemonContract.View {
     private LstPokemonPresenter lstPokemonPresenter;
-    TextView txt1;
+    RecyclerView recyclerPokemon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,7 @@ public class LstPokemonActivity extends AppCompatActivity implements LstPokemonC
     }
 
     private void initComponents() {
-        txt1 = (TextView) findViewById(R.id.txt1);
+        recyclerPokemon = (RecyclerView) findViewById(R.id.RecyclerId);
     }
 
     private void initPresenter() {
@@ -43,13 +46,10 @@ public class LstPokemonActivity extends AppCompatActivity implements LstPokemonC
     public void successLstPokemon(ArrayList<Pokemon> lstPokemon, String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
-        String cadena = "";
+        recyclerPokemon.setLayoutManager(new LinearLayoutManager(this));
 
-        for (int i = 0; i < lstPokemon.size(); i++) {
-            cadena += (i+1) + "º " + lstPokemon.get(i).getName().toUpperCase() + "\n\n";
-        }
-
-        txt1.setText(cadena);
+        AdapterPokemon adapter = new AdapterPokemon(lstPokemon);
+        recyclerPokemon.setAdapter(adapter);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class LstPokemonModel implements LstPokemonContract.Model {
     public void getPokemonService(final OnLstPokemonListener onLstPokemonListener) {
         /*Ejecuto Webservice con retrofit*/
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<PokemonRespuesta> call = apiService.getPokemons(0,0);
+        Call<PokemonRespuesta> call = apiService.getPokemons(50,0);
         call.enqueue(new Callback<PokemonRespuesta>() {
             @Override
             public void onResponse(Call<PokemonRespuesta> call, Response<PokemonRespuesta> response) {
