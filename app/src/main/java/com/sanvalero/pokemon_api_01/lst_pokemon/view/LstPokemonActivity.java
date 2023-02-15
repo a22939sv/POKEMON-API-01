@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class LstPokemonActivity extends AppCompatActivity implements LstPokemonContract.View {
     private LstPokemonPresenter lstPokemonPresenter;
     RecyclerView recyclerPokemon;
+    private AdapterPokemon lstPokemonAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,8 @@ public class LstPokemonActivity extends AppCompatActivity implements LstPokemonC
 
         AdapterPokemon adapter = new AdapterPokemon(lstPokemon);
         recyclerPokemon.setAdapter(adapter);
+
+        //lstPokemonAdapter.adicionarListaPokemon(lstPokemon);
     }
 
     @Override

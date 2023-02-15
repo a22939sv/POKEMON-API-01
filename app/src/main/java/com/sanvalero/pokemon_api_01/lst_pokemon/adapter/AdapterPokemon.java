@@ -34,7 +34,6 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
     @Override
     public void onBindViewHolder(@NonNull AdapterPokemon.ViewHolderPokemon holder, int position) {
         holder.etiNombre.setText(lstPokemon.get(position).getName());
-        holder.etiInformacion.setText(lstPokemon.get(position).getUrl());
         Picasso.get().load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+(position+1)+".png").into(holder.foto);
     }
 
@@ -44,15 +43,18 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
     }
 
     public class ViewHolderPokemon extends RecyclerView.ViewHolder {
-        TextView etiNombre, etiInformacion;
+        TextView etiNombre;
         ImageView foto;
 
         public ViewHolderPokemon(@NonNull View itemView) {
             super(itemView);
 
             etiNombre = (TextView) itemView.findViewById(R.id.idNombre);
-            etiInformacion = (TextView) itemView.findViewById(R.id.idInfo);
             foto = (ImageView) itemView.findViewById(R.id.idImagen);
         }
+    }
+
+    public void adicionarListaPokemon(ArrayList<Pokemon> lstPokemon) {
+
     }
 }
