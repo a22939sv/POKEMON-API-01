@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +44,7 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
     }
 
     public class ViewHolderPokemon extends RecyclerView.ViewHolder {
-        TextView etiNombre;
+        TextView etiNombre, etiLinea;
         ImageView foto;
 
         public ViewHolderPokemon(@NonNull View itemView) {
@@ -51,6 +52,7 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
 
             etiNombre = (TextView) itemView.findViewById(R.id.idNombre);
             foto = (ImageView) itemView.findViewById(R.id.idImagen);
+            etiLinea = (TextView) itemView.findViewById(R.id.idLinea);
         }
     }
 
